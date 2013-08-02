@@ -24,7 +24,6 @@ class RoheaOpenXIntegrationExtension extends Extension
 
         $container->setParameter('rohea_open_x_integration.servers', $config['servers']);
 
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

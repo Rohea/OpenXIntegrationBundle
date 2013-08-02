@@ -8,6 +8,10 @@ use \BadMethodCallException;
 
 use Symfony\Component\HttpFoundation\Response;
 
+use fXmlRpc\Client;
+
+use OpenXApiClient\OpenXApiClient;
+
 class ApiClientFactory {
 
     /**
@@ -15,17 +19,23 @@ class ApiClientFactory {
      */
     private $servers;
 
+    /**
+     * Constructor
+     *
+     * @param array $servers config
+     */
     public function __construct($servers)
     {
         $this->servers = $servers;
     }
 
     /**
-     * Get instance of OpenX XML-RPC Api client
+     * Get instance of OpenX XML-RPC Api client for given server
      *
      * @param string $server key that matches configuration
+     * @param fXmlRpc\Client $client instance of fXmlRcp client or null
      */
-    public function getClient($server)
+    public function getClient(string $server, Client $client = null)
     {
         if (! isset($this->servers[$server])) {
             throw new \InvalidArgumentException("Server '$server' is not defined in configuration.");
@@ -33,9 +43,13 @@ class ApiClientFactory {
 
         $config = $this->servers[$server];
 
-var_dump($config);
-die();
+        //TODO: Somehow enable usage of other than default http client for fxmlrpc
+        if (! isset($client)) {
+            $client = new Client("http://".$config['host'].$config['path']);
+        }
+        $openx = new OpenXApiClient($client, $config['username'], $config['password']);
 
+        return $openx;
     }
 
 }
