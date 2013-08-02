@@ -1,0 +1,7 @@
+parameters:
+#    rohea_open_x_client.example.class: Rohea\OpenXClientBundle\Example
+
+services:
+#    rohea_open_x_client.example:
+#        class: %rohea_open_x_client.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

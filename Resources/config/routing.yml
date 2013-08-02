@@ -1,0 +1,3 @@
+rohea_open_x_client_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: RoheaOpenXClientBundle:Default:index }
