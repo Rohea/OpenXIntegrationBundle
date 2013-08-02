@@ -1,15 +1,8 @@
 <?php
 namespace Rohea\OpenXIntegrationBundle\Service;
 
-use \LogicException;
 use \InvalidArgumentException;
-use \RuntimeException;
-use \BadMethodCallException;
-
-use Symfony\Component\HttpFoundation\Response;
-
-use fXmlRpc\Client;
-
+use fXmlRpc\Client as FXmlRpcClient;
 use OpenXApiClient\OpenXApiClient;
 
 class Factory {
@@ -38,13 +31,13 @@ class Factory {
     public function getOpenXApiClient($server, Client $client = null)
     {
         if (! isset($this->servers[$server])) {
-            throw new \InvalidArgumentException("Server '$server' is not defined in configuration.");
+            throw new InvalidArgumentException("Server '$server' is not defined in configuration.");
         }
 
         $config = $this->servers[$server];
 
         if (! isset($client)) {
-            $client = new Client("http://".$config['host'].$config['path']);
+            $client = new FXmlRpcClient("http://".$config['host'].$config['path']);
         }
         $openx = new OpenXApiClient($client, $config['username'], $config['password']);
 
