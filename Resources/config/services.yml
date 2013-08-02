@@ -2,6 +2,6 @@ parameters:
 #    rohea_open_x_client.example.class: Rohea\OpenXClientBundle\Example
 
 services:
-    rohea_open_x_integration.api_client_factory:
-        class: Rohea\OpenXIntegrationBundle\Service\ApiClientFactory
+    rohea_open_x_integration.factory:
+        class: Rohea\OpenXIntegrationBundle\Service\Factory
         arguments: [%rohea_open_x_integration.servers%]

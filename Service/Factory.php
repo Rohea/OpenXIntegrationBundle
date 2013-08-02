@@ -12,7 +12,7 @@ use fXmlRpc\Client;
 
 use OpenXApiClient\OpenXApiClient;
 
-class ApiClientFactory {
+class Factory {
 
     /**
      * $var array OpenX server configurations from config
@@ -35,7 +35,7 @@ class ApiClientFactory {
      * @param string $server key that matches configuration
      * @param fXmlRpc\Client $client instance of fXmlRcp client or null. If null, default client will be created.
      */
-    public function getClient($server, Client $client = null)
+    public function getOpenXApiClient($server, Client $client = null)
     {
         if (! isset($this->servers[$server])) {
             throw new \InvalidArgumentException("Server '$server' is not defined in configuration.");
