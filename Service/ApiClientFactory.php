@@ -33,7 +33,7 @@ class ApiClientFactory {
      * Get instance of OpenX XML-RPC Api client for given server
      *
      * @param string $server key that matches configuration
-     * @param fXmlRpc\Client $client instance of fXmlRcp client or null
+     * @param fXmlRpc\Client $client instance of fXmlRcp client or null. If null, default client will be created.
      */
     public function getClient($server, Client $client = null)
     {
@@ -43,7 +43,6 @@ class ApiClientFactory {
 
         $config = $this->servers[$server];
 
-        //TODO: Somehow enable usage of other than default http client for fxmlrpc
         if (! isset($client)) {
             $client = new Client("http://".$config['host'].$config['path']);
         }
