@@ -35,7 +35,7 @@ class ApiClientFactory {
      * @param string $server key that matches configuration
      * @param fXmlRpc\Client $client instance of fXmlRcp client or null
      */
-    public function getClient(string $server, Client $client = null)
+    public function getClient($server, Client $client = null)
     {
         if (! isset($this->servers[$server])) {
             throw new \InvalidArgumentException("Server '$server' is not defined in configuration.");
