@@ -28,7 +28,7 @@ class Factory {
      * @param string $server key that matches configuration
      * @param fXmlRpc\Client $client instance of fXmlRcp client or null. If null, default client will be created.
      */
-    public function getOpenXApiClient($server, Client $client = null)
+    public function getOpenXApiClient($server, FXmlRpcClient $client = null)
     {
         if (! isset($this->servers[$server])) {
             throw new InvalidArgumentException("Server '$server' is not defined in configuration.");
