@@ -1,10 +1,10 @@
 <?php
 
-namespace Rohea\OpenXClientBundle\Controller;
+namespace Rohea\OpenXIntegrationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class ApiController extends Controller
 {
     public function indexAction($name)
     {
