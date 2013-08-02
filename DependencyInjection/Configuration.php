@@ -23,13 +23,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('gridfs_prefix')->defaultValue('RoheaFilemanagerFS')->cannotBeEmpty()->end()
-                ->arrayNode('contexts')
+                ->arrayNode('servers')
                     ->useAttributeAsKey('key') //very necessary to enable keys as indexes
                     ->prototype('array')
                         ->children()
                             ->scalarNode('host')->end()
-                            ->scalarNode('base_path')->end()
+                            ->scalarNode('path')->end()
                             ->scalarNode('username')->end()
                             ->scalarNode('password')->end()
                         ->end()
